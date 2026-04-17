@@ -1,20 +1,74 @@
-.jumbotron {
-  padding-top: 6rem;
-  background-color: #e2edff;
+html {
+  scroll-padding-top: 5rem; /* Sesuaikan nilai ini sesuai tinggi navbar*/
 }
 
-#projects {
-  background-color: #e2edff;
+#profile {
+  min-height: 100vh;
 }
 
-section {
-  padding-top: 5rem;
+/* Aturan dasar untuk mobile, yang juga akan berfungsi sebagai fallback */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: top;
+  border: 5px solid #ffffff;
+  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
 }
 
-.gallery-img {
-  width: 100%;
+.mouse-connector {
+  position: relative;
 }
 
-#gallery .row > * {
-  padding: 0;
+.mouse-connector .line {
+  border-bottom: 2px dashed #adb5bd; /* Warna dan jenis garis */
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* Aturan untuk memberikan jarak dari navbar */
+body {
+  padding-top: 3rem; /* Jarak untuk tampilan desktop */
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 5rem; /* Jarak yang lebih besar untuk tampilan mobile */
+  }
+}
+
+/* Aturan untuk layar desktop (lebar minimum 768px) */
+@media (min-width: 768px) {
+  .profile-pic {
+    width: 220px; /* Contoh ukuran yang lebih besar */
+    height: 220px;
+    margin-bottom: 0;
+  }
+}
+
+/* Mengatur transisi dan efek hover dasar untuk semua ikon */
+.social-links a i {
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover i {
+  transform: scale(1.1); /* Ikon membesar saat di-hover */
+}
+
+/* Mengatur warna hover untuk setiap ikon */
+.icon-linkedin:hover {
+  color: #6caae7;
+}
+
+.icon-youtube:hover {
+  color: #ff0000;
+}
+
+.icon-palette:hover {
+  color: #ffa500;
+}
+
+.icon-email:hover {
+  color: #4c00ff;
 }
