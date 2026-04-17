@@ -6,6 +6,11 @@ html {
   min-height: 100vh;
 }
 
+/* Membuat menu yang sedang aktif menjadi tebal */
+.nav-link.active {
+  font-weight: 800 !important;
+  text-decoration: underline; /* Opsional: tambah garis bawah supaya jelas */
+}
 /* Aturan dasar untuk mobile, yang juga akan berfungsi sebagai fallback */
 .profile-pic {
   width: 150px;
