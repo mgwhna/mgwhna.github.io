@@ -3,58 +3,54 @@
 
 /* --- Base & Scroll Settings --- */
 html {
-  scroll-padding-top: 5rem; /* Menjaga konten tidak tertutup fixed navbar */
+  scroll-padding-top: 5rem;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  padding-top: 4rem; /* Jarak default desktop */
+  padding-top: 4rem;
 }
 
 /* Memaksa Navbar berada di urutan terdepan layar melompati sisa scss lain */
 .navbar {
-  z-index: 9999 !important;
+  z-index: 10000 !important;
 }
 
 /* Mengatur gaya tampilan menu drop-down mobile murni via CSS */
 @media (max-width: 991.98px) {
   .navbar-collapse {
-    display: none; /* Default sembunyi di HP */
     background-color: #556b2f !important; /* Sage Tua */
     border-radius: 8px;
     padding: 15px;
     margin-top: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Ketika fungsi JS menyisipkan kelas .show, paksa menu tampil */
-  .navbar-collapse.show {
-    display: block !important;
+    position: relative;
+    z-index: 10001 !important;
   }
 }
 
 @media (max-width: 768px) {
   body {
-    padding-top: 5rem; /* Jarak lebih longgar di mobile */
+    padding-top: 5rem;
   }
 }
 
 /* --- Tema Warna Sage Green & Cream (Override Bootstrap) --- */
 .bg-primary {
-  background-color: #556b2f !important; /* Sage Tua untuk Navbar & Footer */
+  background-color: #556b2f !important;
 }
 
 .text-primary {
-  color: #6b8e23 !important; /* Olive/Sage Cerah untuk Sub-judul */
+  color: #6b8e23 !important;
 }
 
 .bg-body-secondary {
-  background-color: #fcfbf7 !important; /* Background Cream Lembut */
+  background-color: #fcfbf7 !important;
 }
 
 .bg-white {
-  background-color: #f4f1ea !important; /* Background Sekunder (Kontras Cream) */
+  background-color: #f4f1ea !important;
 }
 
 /* --- Navigation --- */
