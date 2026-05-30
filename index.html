@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MEGA WAHANA SIBORO [MW]</title>
+    <title>MEGA</title>
 
+    <!-- CSS External -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,29 +16,30 @@
   </head>
 
   <body class="bg-body-secondary" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-wrap fs-6 fs-md-5" href="#" style="max-width: 75%">YOUR PARTNER FOR DIGITAL SOLUTIONS</a>
+    <!-- Navbar Minimalis Modern -->
+    <nav class="navbar navbar-dark bg-primary shadow-sm fixed-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <!-- Teks Brand Sebelah Kiri -->
+        <a class="navbar-brand fw-bold text-wrap fs-6 fs-md-5 mb-0" href="#" style="max-width: 50%"> MEGA WAHANA SIBORO </a>
 
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto text-center py-2 py-lg-0">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#profile">MW</a></li>
-            <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-            <li class="nav-item"><a class="nav-link" href="#sertifikat">Sertifikat</a></li>
-            <li class="nav-item"><a class="nav-link" href="#keahlian">Keahlian</a></li>
-            <li class="nav-item"><a class="nav-link" href="#hubungimw">Hubungi MW</a></li>
+        <!-- Menu Sebelah Kanan (Langsung Baris, Tanpa Hamburger) -->
+        <div id="navbarNav">
+          <ul class="navbar-nav flex-row gap-3 gap-md-4">
+            <li class="nav-item"><a class="nav-link px-1 py-0 active" href="#profile">MW</a></li>
+            <li class="nav-item"><a class="nav-link px-1 py-0" href="#resume">Resume</a></li>
+            <li class="nav-item"><a class="nav-link px-1 py-0" href="#sertifikat">Sertifikat</a></li>
+            <li class="nav-item"><a class="nav-link px-1 py-0" href="#keahlian">Keahlian</a></li>
+            <li class="nav-item"><a class="nav-link px-1 py-0" href="#hubungimw">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <!-- Profile Section -->
     <section id="profile" class="d-flex align-items-center py-5">
       <div class="container">
         <div class="row align-items-center justify-content-center">
+          <!-- Kolom Kiri: Informasi Text & Kontak -->
           <div class="col-md-6 text-md-start text-center order-2 order-md-1" data-aos="fade-right">
             <div class="brand-logo mb-3 d-flex align-items-center justify-content-center justify-content-md-start gap-2">
               <i class="bi bi-moisture fs-3 text-success"></i>
@@ -67,6 +69,7 @@
             </div>
           </div>
 
+          <!-- Kolom Kanan: Blob Frame & Karakter 3D -->
           <div class="col-md-5 text-center order-1 order-md-2 mb-5 mb-md-0" data-aos="zoom-in">
             <div class="blob-wrapper position-relative mx-auto">
               <div class="leaf-deco top-left"><i class="bi bi-moisture text-success fs-4"></i></div>
@@ -81,6 +84,7 @@
       </div>
     </section>
 
+    <!-- Teks Berjalan -->
     <div class="marquee-container bg-light py-2 border-top border-bottom overflow-hidden shadow-sm">
       <div class="marquee-text fw-semibold text-secondary">
         <span>Perdagangan, Indonesia &nbsp;&bull;&nbsp; Perdagangan, Indonesia &nbsp;&bull;&nbsp; Perdagangan, Indonesia &nbsp;&bull;&nbsp; Perdagangan, Indonesia &nbsp;&bull;&nbsp; </span>
@@ -88,11 +92,13 @@
       </div>
     </div>
 
+    <!-- Mouse Connector Separator -->
     <div class="mouse-connector mt-5 text-center d-none d-md-block">
       <div class="line mb-2"></div>
       <i class="bi bi-mouse fs-1 text-muted animate-mouse"></i>
     </div>
 
+    <!-- Resume Section -->
     <section id="resume" class="py-5">
       <div class="container">
         <h2 class="text-center mb-5">Resume</h2>
@@ -100,7 +106,7 @@
         <div class="card mb-4 shadow-sm" data-aos="fade-up">
           <div class="card-body">
             <h5 class="card-title fw-bold">Creative Technologist <span class="text-muted fw-normal float-end small">Jan 2023 - Sekarang</span></h5>
-            <h6 class="card-subtitle mb-3 text-primary">MW Solusi Digital</h6>
+            <h6 class="card-subtitle mb-3 text-primary-custom">MW Solusi Digital</h6>
             <ul>
               <li>Mengembangkan fitur baru untuk aplikasi web.</li>
               <li>Berkolaborasi dengan tim desain untuk menciptakan pengalaman pengguna yang lebih baik.</li>
@@ -112,12 +118,13 @@
         <div class="card mb-4 shadow-sm" data-aos="fade-up">
           <div class="card-body">
             <h5 class="card-title fw-bold">Sarjana Teknik Informatika <span class="text-muted fw-normal float-end small">2017 - 2023</span></h5>
-            <h6 class="card-subtitle mb-2 text-primary">Institut Teknologi Telkom Purwokerto</h6>
+            <h6 class="card-subtitle mb-2 text-primary-custom">Institut Teknologi Telkom Purwokerto</h6>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Sertifikat Section -->
     <section id="sertifikat" class="py-5 bg-white">
       <div class="container">
         <h2 class="text-center mb-5">Sertifikat</h2>
@@ -139,7 +146,8 @@
               <div class="card-body">
                 <h5 class="card-title fw-bold">Sertifikat Pelatihan 1</h5>
                 <p class="card-text text-muted small">Pengenalan Data Science dan Pemanfaatannya di Berbagai Sektor</p>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalProyek1">Rincian</button>
+                <!-- Warna disesuaikan via CSS .btn-primary -->
+                <button type="button" class="btn btn-primary btn-sm px-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProyek1">Rincian</button>
               </div>
             </div>
           </div>
@@ -161,7 +169,7 @@
               <div class="card-body">
                 <h5 class="card-title fw-bold">Sertifikat Pelatihan 2</h5>
                 <p class="card-text text-muted small">Pelatihan Associate Data Scientist + Python - Nasional</p>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalProyek2">Rincian</button>
+                <button type="button" class="btn btn-primary btn-sm px-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProyek2">Rincian</button>
               </div>
             </div>
           </div>
@@ -183,7 +191,7 @@
               <div class="card-body">
                 <h5 class="card-title fw-bold">Sertifikat Pelatihan 3</h5>
                 <p class="card-text text-muted small">Pelatihan Data Scientist Supervisor</p>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalProyek3">Rincian</button>
+                <button type="button" class="btn btn-primary btn-sm px-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#modalProyek3">Rincian</button>
               </div>
             </div>
           </div>
@@ -191,6 +199,7 @@
       </div>
     </section>
 
+    <!-- Modals -->
     <div class="modal fade" id="modalProyek1" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -212,6 +221,7 @@
       </div>
     </div>
 
+    <!-- Keahlian Section -->
     <section id="keahlian" class="py-5">
       <div class="container">
         <h2 class="text-center mb-5">Keahlian</h2>
@@ -219,7 +229,7 @@
           <div class="col" data-aos="fade-up">
             <div class="card h-100 shadow-sm text-center p-3">
               <div class="card-body">
-                <i class="bi bi-code-slash fs-1 mb-3 text-primary"></i>
+                <i class="bi bi-code-slash fs-1 mb-3 text-success"></i>
                 <h5 class="card-title fw-bold">Pengembangan Web</h5>
                 <p class="card-text text-muted small">HTML, CSS, JavaScript, React, Node.js, PHP, Bootstrap</p>
               </div>
@@ -247,9 +257,10 @@
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="hubungimw" class="py-5 bg-white">
       <div class="container">
-        <h2 class="text-center mb-5">Hubungi MW</h2>
+        <h2 class="text-center mb-5">Contact</h2>
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
@@ -269,21 +280,24 @@
                 <label for="pesan" class="form-label fw-semibold">Pesan</label>
                 <textarea class="form-control" id="pesan" rows="3" name="pesan" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-kirim px-4">Kirim</button>
-              <button class="btn btn-primary btn-loading d-none" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...</button>
+              <!-- Warna tombol kirim otomatis berubah dari CSS -->
+              <button type="submit" class="btn btn-primary btn-kirim px-5 rounded-pill shadow-sm">Kirim</button>
+              <button class="btn btn-primary btn-loading d-none rounded-pill px-5" type="button" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...</button>
             </form>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="text-center py-5 bg-primary text-white position-relative">
       <div class="container">
-        <p class="mb-2 fw-bold">CODE &copy; 2026 MEGA WAHANA SIBORO</p>
+        <p class="mb-2 fw-bold">CODE &copy; 2026 MEGA</p>
         <p class="mb-0 small"><i class="bi bi-code-slash me-1"></i> TERIMA KASIH</p>
       </div>
     </footer>
 
+    <!-- Scripts Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bundle/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -317,40 +331,6 @@
             btnKirim.classList.remove("d-none");
             console.error("Error!", error.message);
           });
-      });
-
-      // SOLUSI TOTAL: Menggunakan manipulasi class DOM murni tanpa memanggil library Bootstrap
-      document.addEventListener("DOMContentLoaded", () => {
-        const tombolHamburger = document.querySelector(".navbar-toggler");
-        const menuNavigasi = document.getElementById("navbarNav");
-
-        if (tombolHamburger && menuNavigasi) {
-          tombolHamburger.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Toggle manual display murni bypass library bootstrap
-            if (menuNavigasi.style.display === "block") {
-              menuNavigasi.style.display = "none";
-            } else {
-              menuNavigasi.style.display = "block";
-            }
-          });
-
-          // Otomatis menutup kembali menu jika salah satu link diklik
-          document.querySelectorAll("#navbarNav .nav-link").forEach((link) => {
-            link.addEventListener("click", () => {
-              menuNavigasi.style.display = "none";
-            });
-          });
-
-          // Menutup menu jika mengklik di luar area navbar
-          document.addEventListener("click", (e) => {
-            if (!menuNavigasi.contains(e.target) && !tombolHamburger.contains(e.target)) {
-              menuNavigasi.style.display = "none";
-            }
-          });
-        }
       });
     </script>
   </body>
