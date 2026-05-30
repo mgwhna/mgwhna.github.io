@@ -1,79 +1,265 @@
+/* --- Google Fonts (Aesthetic Script Font untuk Nama) --- */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&display=swap");
+
+/* --- Base & Scroll Settings --- */
 html {
-  scroll-padding-top: 5rem; /* Sesuaikan nilai ini sesuai tinggi navbar*/
+  scroll-padding-top: 5rem; /* Menjaga konten tidak tertutup fixed navbar */
+  scroll-behavior: smooth;
 }
 
-#profile {
-  min-height: 100vh;
-}
-
-/* Membuat menu yang sedang aktif menjadi tebal */
-.nav-link.active {
-  font-weight: 800 !important;
-  text-decoration: underline; /* Opsional: tambah garis bawah supaya jelas */
-}
-/* Aturan dasar untuk mobile, yang juga akan berfungsi sebagai fallback */
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  object-position: top;
-  border: 5px solid #ffffff;
-  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-}
-
-.mouse-connector {
-  position: relative;
-}
-
-.mouse-connector .line {
-  border-bottom: 2px dashed #adb5bd; /* Warna dan jenis garis */
-  width: 50%;
-  margin: 0 auto;
-}
-
-/* Aturan untuk memberikan jarak dari navbar */
 body {
-  padding-top: 3rem; /* Jarak untuk tampilan desktop */
+  font-family: "Poppins", sans-serif;
+  padding-top: 3rem; /* Jarak default desktop */
 }
 
 @media (max-width: 768px) {
   body {
-    padding-top: 5rem; /* Jarak yang lebih besar untuk tampilan mobile */
+    padding-top: 5rem; /* Jarak lebih longgar di mobile */
   }
 }
 
-/* Aturan untuk layar desktop (lebar minimum 768px) */
+/* --- Tema Warna Sage Green & Cream (Override Bootstrap) --- */
+.bg-primary {
+  background-color: #556b2f !important; /* Sage Tua untuk Navbar & Footer */
+}
+
+.text-primary {
+  color: #6b8e23 !important; /* Olive/Sage Cerah untuk Sub-judul */
+}
+
+.bg-body-secondary {
+  background-color: #fcfbf7 !important; /* Background Cream Lembut */
+}
+
+.bg-white {
+  background-color: #f4f1ea !important; /* Background Sekunder (Kontras Cream) */
+}
+
+/* --- Navigation --- */
+.nav-link.active {
+  font-weight: 800 !important;
+  text-decoration: underline;
+}
+
+/* --- Profile Section Custom Style --- */
+#profile {
+  min-height: 85vh;
+}
+
+.script-font {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+
+.custom-profile-list li {
+  letter-spacing: 0.5px;
+}
+
+/* --- Blob Frame Masking (Sesuai Gambar Banner) --- */
+.blob-wrapper {
+  width: 280px;
+  height: 280px;
+}
+
+/* Formasi kurva organik (Blob) */
+.blob-frame {
+  width: 100%;
+  height: 100%;
+  background-color: #e5dfd3; /* Background di dalam blob */
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(85, 107, 47, 0.15);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: all 0.5s ease;
+  border: 4px solid #ffffff;
+}
+
+/* Efek ketika blob di-hover berubah bentuk perlahan */
+.blob-frame:hover {
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  border-color: #6b8e23;
+}
+
+.character-3d {
+  width: 85%;
+  height: auto;
+  object-fit: contain;
+  transform: translateY(8px);
+  transition: transform 0.3s ease;
+}
+
+.blob-frame:hover .character-3d {
+  transform: translateY(0px) scale(1.05); /* Karakter seolah maju sedikit */
+}
+
+/* Dekorasi Daun Melayang di Sekitar Blob */
+.leaf-deco {
+  position: absolute;
+  z-index: 2;
+  animation: floatDeco 3s ease-in-out infinite;
+}
+.top-left {
+  top: -5px;
+  left: 5px;
+}
+.bottom-right {
+  bottom: -5px;
+  right: 5px;
+}
+
+@keyframes floatDeco {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* --- Teks Berjalan (Marquee Effect) --- */
+.marquee-container {
+  white-space: nowrap;
+  display: flex;
+  background-color: #f5f3ec !important;
+}
+
+.marquee-text {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+  padding-left: 100%;
+}
+
+.marquee-text span {
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* --- Media Queries untuk Layar Desktop --- */
 @media (min-width: 768px) {
-  .profile-pic {
-    width: 220px; /* Contoh ukuran yang lebih besar */
-    height: 220px;
-    margin-bottom: 0;
+  .blob-wrapper {
+    width: 340px;
+    height: 340px;
   }
 }
 
-/* Mengatur transisi dan efek hover dasar untuk semua ikon */
+/* --- Customisasi Tombol --- */
+.btn-success {
+  background-color: #6b8e23 !important;
+  border-color: #6b8e23 !important;
+  color: #ffffff !important;
+}
+
+.btn-success:hover {
+  background-color: #556b2f !important;
+  border-color: #556b2f !important;
+}
+
+.btn-outline-success {
+  border-color: #6b8e23 !important;
+  color: #6b8e23 !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #6b8e23 !important;
+  color: #ffffff !important;
+}
+
+/* --- Card Portofolio & Resume --- */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e1ded7 !important;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(85, 107, 47, 0.12) !important;
+  border-color: #6b8e23 !important;
+}
+
+/* --- Pengaturan Ikon Media Sosial --- */
 .social-links a i {
   transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .social-links a:hover i {
-  transform: scale(1.1); /* Ikon membesar saat di-hover */
+  transform: scale(1.25) translateY(-2px);
 }
 
-/* Mengatur warna hover untuk setiap ikon */
-.icon-linkedin:hover {
-  color: #6caae7;
-}
-
-.icon-youtube:hover {
-  color: #ff0000;
+/* Warna Hover Spesifik Sosmed */
+.icon-shopee:hover {
+  color: #ee4d2d; /* Warna Oranye khas Shopee */
 }
 
 .icon-palette:hover {
   color: #ffa500;
 }
 
-.icon-email:hover {
-  color: #4c00ff;
+/* --- Dekorasi Garis Bawah Judul H2 --- */
+h2 {
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #6b8e23;
+  border-radius: 2px;
+}
+
+/* --- Mouse Connector Separator --- */
+.mouse-connector .line {
+  border-bottom: 2px dashed #6b8e23;
+  width: 40%;
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+.animate-mouse {
+  display: block;
+  animation: mouseBounce 2s infinite;
+}
+
+@keyframes mouseBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Form Input Focus */
+.form-control:focus {
+  border-color: #6b8e23;
+  box-shadow: 0 0 0 0.25rem rgba(107, 142, 35, 0.25);
 }
