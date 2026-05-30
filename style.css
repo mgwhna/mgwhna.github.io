@@ -149,10 +149,61 @@ body {
   transform: translateY(0px) scale(1.05);
 }
 
-.leaf-deco {
+/* --- Dekorasi Ayat Alkitab Melayang di Sekitar Foto --- */
+.verse-deco {
   position: absolute;
   z-index: 2;
-  animation: floatDeco 3s ease-in-out infinite;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: #556b2f; /* Warna hijau tema utama */
+  font-size: 0.8rem;
+  line-height: 1.3;
+  max-width: 140px; /* Membatasi lebar teks agar rapi saat turun baris */
+  text-align: center;
+  background-color: rgba(252, 251, 247, 0.85); /* Background tipis agar teks tetap terbaca jelas */
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(85, 107, 47, 0.08);
+  animation: floatVerse 4s ease-in-out infinite;
+}
+
+/* Mengatur posisi spesifik teks kiri atas */
+.top-left-verse {
+  top: -15px;
+  left: -40px;
+}
+
+/* Mengatur posisi spesifik teks kanan bawah */
+.bottom-right-verse {
+  bottom: 10px;
+  right: -40px;
+}
+
+/* Efek animasi melayang halus naik-turun */
+@keyframes floatVerse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Responsif untuk layar HP agar teks tidak terpotong keluar layar */
+@media (max-width: 576px) {
+  .top-left-verse {
+    top: -25px;
+    left: 5px;
+  }
+  .bottom-right-verse {
+    bottom: -15px;
+    right: 5px;
+  }
+  .verse-deco {
+    font-size: 0.7rem;
+    max-width: 120px;
+  }
 }
 .top-left {
   top: -5px;
