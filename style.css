@@ -290,8 +290,15 @@ h2::after {
   opacity: 0.5;
 }
 
+/* Mengatur ukuran logo pengganti mouse */
+.custom-scroll-logo {
+  width: 50px; /* Atur lebar logo sesuai kenyamanan visual */
+  height: auto;
+  display: inline-block;
+}
+
+/* Animasi memantul yang halus untuk logo */
 .animate-mouse {
-  display: block;
   animation: mouseBounce 2s infinite;
 }
 
@@ -304,13 +311,12 @@ h2::after {
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-8px);
-  }
+    transform: translateY(-10px);
+  } /* Bergerak naik sedikit */
   60% {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
   }
 }
-
 /* Form Input Focus */
 .form-control:focus {
   border-color: #6b8e23;
