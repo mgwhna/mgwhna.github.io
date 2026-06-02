@@ -1,0 +1,294 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MEGA - Creative Showcase</title>
+    <link rel="icon" type="image/png" href="img/projects/logo-web.png" />
+
+    <!-- CSS External -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Integrasi Tema Warna Sage & Cream secara terisolasi -->
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fcfbf7 !important;
+        color: #333;
+      }
+      .bg-primary-custom {
+        background-color: #556b2f !important; /* Sage Tua */
+      }
+      .text-success-custom {
+        color: #6b8e23 !important; /* Sage Muda */
+      }
+      .btn-primary-custom {
+        background-color: #556b2f !important;
+        border-color: #556b2f !important;
+        color: #ffffff !important;
+        transition: all 0.3s ease;
+      }
+      .btn-primary-custom:hover {
+        background-color: #3e4f22 !important;
+        transform: translateY(-2px);
+      }
+      .script-font {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+
+      /* Showcase Header */
+      .showcase-header {
+        padding: 80px 0 40px 0;
+        background-color: #f4f1ea;
+        border-bottom: 1px solid #e1ded7;
+      }
+
+      /* Card Styling */
+      .showcase-card {
+        background-color: #ffffff !important;
+        border: 1px solid #e1ded7 !important;
+        border-radius: 16px !important;
+        overflow: hidden;
+        height: 100%;
+        transition:
+          transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+          box-shadow 0.3s ease,
+          border-color 0.3s ease !important;
+        cursor: pointer;
+      }
+      .showcase-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(85, 107, 47, 0.15) !important;
+        border-color: #6b8e23 !important;
+      }
+      .bg-showcase-subtle {
+        background-color: rgba(107, 142, 35, 0.12) !important;
+        color: #556b2f !important;
+      }
+
+      /* Back Home Button style */
+      .btn-back-home {
+        border: 1.5px solid #6b8e23;
+        color: #6b8e23;
+        transition: all 0.3s ease;
+      }
+      .btn-back-home:hover {
+        background-color: #6b8e23;
+        color: #ffffff;
+        transform: translateX(-3px);
+      }
+
+      /* Footer */
+      footer {
+        background-color: #556b2f;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark bg-primary-custom shadow-sm fixed-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand fw-bold fs-5" href="index.html"> MEGA WAHANA SIBORO </a>
+        <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill px-3"> <i class="bi bi-house-door me-1"></i> Home </a>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="showcase-header text-center mt-4" data-aos="fade-down">
+      <div class="container">
+        <div class="brand-logo mb-3 d-flex align-items-center justify-content-center gap-2">
+          <i class="bi bi-moisture fs-2 text-success-custom"></i>
+          <span class="fs-1 fw-light text-success-custom script-font">Creative Showcase</span>
+        </div>
+        <p class="lead text-muted max-width-md mx-auto">Explore my collection of specialized projects in Data Science, Automation, Web Scraping, and Creative Graphics Design.</p>
+        <div class="mt-4">
+          <a href="index.html" class="btn btn-back-home rounded-pill px-4 py-2"> <i class="bi bi-arrow-left me-2"></i> Back to Main Portfolio </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Project Gallery Grid Section -->
+    <section class="py-5" data-aos="fade-up">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Project 1: Predictive Analytics Model -->
+          <div class="col-md-6 col-lg-6">
+            <div class="showcase-card p-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalPredictive">
+              <div class="text-center mb-4">
+                <i class="bi bi-cpu text-success-custom" style="font-size: 3.5rem"></i>
+              </div>
+              <div class="card-body p-0">
+                <span class="badge bg-showcase-subtle mb-3 px-3 py-1.5 small fw-semibold">Data Science</span>
+                <h4 class="fw-bold text-dark mb-2">Predictive Analytics Model</h4>
+                <p class="text-muted small mb-3">Membangun model prediksi akurat untuk klasifikasi data bisnis menggunakan algoritma Machine Learning.</p>
+                <div class="d-flex align-items-center text-success-custom fw-semibold small"><span>View Details</span> <i class="bi bi-arrow-right ms-2"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Automated Web Scraping Tools -->
+          <div class="col-md-6 col-lg-6">
+            <div class="showcase-card p-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalScraping">
+              <div class="text-center mb-4">
+                <i class="bi bi-cloud-arrow-down text-success-custom" style="font-size: 3.5rem"></i>
+              </div>
+              <div class="card-body p-0">
+                <span class="badge bg-showcase-subtle mb-3 px-3 py-1.5 small fw-semibold">Automation</span>
+                <h4 class="fw-bold text-dark mb-2">Automated Web Scraping Tools</h4>
+                <p class="text-muted small mb-3">Skrip otomatis ekstraksi data skala besar dari berbagai platform e-commerce dan portal berita.</p>
+                <div class="d-flex align-items-center text-success-custom fw-semibold small"><span>View Details</span> <i class="bi bi-arrow-right ms-2"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: 3D Business Card Design -->
+          <div class="col-md-6 col-lg-6">
+            <div class="showcase-card p-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modal3DCard">
+              <div class="text-center mb-4 d-flex align-items-center justify-content-center" style="height: 3.5rem">
+                <img src="img/projects/logo-web.png" alt="3D Design" style="height: 3.5rem; width: auto; object-fit: contain" />
+              </div>
+              <div class="card-body p-0">
+                <span class="badge bg-showcase-subtle mb-3 px-3 py-1.5 small fw-semibold">3D Graphics</span>
+                <h4 class="fw-bold text-dark mb-2">3D Business Card Design</h4>
+                <p class="text-muted small mb-3">Desain kartu nama bisnis interaktif 3 dimensi yang responsif dan dioptimalkan untuk performa web.</p>
+                <div class="d-flex align-items-center text-success-custom fw-semibold small"><span>View Details</span> <i class="bi bi-arrow-right ms-2"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Data Cleaning & Pipelines -->
+          <div class="col-md-6 col-lg-6">
+            <div class="showcase-card p-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalDataClean">
+              <div class="text-center mb-4">
+                <i class="bi bi-lightning-charge text-success-custom" style="font-size: 3.5rem"></i>
+              </div>
+              <div class="card-body p-0">
+                <span class="badge bg-showcase-subtle mb-3 px-3 py-1.5 small fw-semibold">Data Engineering</span>
+                <h4 class="fw-bold text-dark mb-2">Data Cleaning & Pipelines</h4>
+                <p class="text-muted small mb-3">Transformasi data kotor (raw data) menjadi dataset siap pakai yang terstruktur secara optimal.</p>
+                <div class="d-flex align-items-center text-success-custom fw-semibold small"><span>View Details</span> <i class="bi bi-arrow-right ms-2"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal 1: Details for Predictive Model -->
+    <div class="modal fade" id="modalPredictive" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px">
+          <div class="modal-header border-0 pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold text-success-custom">Predictive Analytics Model</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p><strong>Teknologi:</strong> Python, Scikit-Learn, Pandas, NumPy, Jupyter Notebook.</p>
+            <p>
+              <strong>Deskripsi Proyek:</strong> Proyek ini berfokus pada pembangunan infrastruktur model prediksi untuk menganalisis data transaksional konsumen. Model ini mampu memprediksi tren pembelian berulang (*churn rate*) dengan
+              akurasi tinggi serta mengklasifikasikan segmentasi pelanggan untuk kebutuhan pemasaran terarah.
+            </p>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4">
+            <button type="button" class="btn btn-primary-custom rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Details for Web Scraping -->
+    <div class="modal fade" id="modalScraping" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px">
+          <div class="modal-header border-0 pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold text-success-custom">Automated Web Scraping Tools</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p><strong>Teknologi:</strong> Python, BeautifulSoup4, Scrapy, Selenium Webdriver.</p>
+            <p>
+              <strong>Deskripsi Proyek:</strong> Implementasi sistem pengambilan data otomatis skala besar dari situs e-commerce dan portal publik. Dilengkapi dengan manajemen rotasi proxy otomatis dan penanganan *CAPTCHA*, memastikan
+              proses ekstraksi berjalan mulus tanpa hambatan.
+            </p>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4">
+            <button type="button" class="btn btn-primary-custom rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Details for 3D Business Card -->
+    <div class="modal fade" id="modal3DCard" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px">
+          <div class="modal-header border-0 pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold text-success-custom">3D Business Card Design</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p><strong>Teknologi:</strong> Three.js, CSS 3D Transforms, HTML5 Canvas, Blender.</p>
+            <p>
+              <strong>Deskripsi Proyek:</strong> Desain kartu nama bisnis digital berteknologi tinggi yang interaktif di browser. Pengunjung dapat memutar, membalik, dan menekan bagian-bagian kartu secara responsif untuk memperlihatkan
+              detail informasi kontak dengan animasi transisi berkualitas premium.
+            </p>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4">
+            <button type="button" class="btn btn-primary-custom rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Details for Data Cleaning -->
+    <div class="modal fade" id="modalDataClean" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px">
+          <div class="modal-header border-0 pb-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold text-success-custom">Data Cleaning & Pipelines</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p><strong>Teknologi:</strong> Python, SQL, Apache Airflow, KNIME.</p>
+            <p>
+              <strong>Deskripsi Proyek:</strong> Membangun saluran pembersih data (*data pipeline*) otomatis untuk merapikan dataset yang berantakan (*dirty data*). Menghilangkan nilai duplikat, menangani *missing values*, menyelaraskan
+              tipe data, dan menyiapkan dataset final yang siap pakai.
+            </p>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4">
+            <button type="button" class="btn btn-primary-custom rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-5 bg-primary-custom text-white position-relative mt-5">
+      <div class="container">
+        <p class="mb-2 fw-bold">CODE &copy; 2026 MEGA</p>
+        <p class="mb-0 small"><i class="bi bi-code-slash me-1"></i> THANK YOU</p>
+      </div>
+    </footer>
+
+    <!-- Scripts Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bundle/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        duration: 1200,
+      });
+    </script>
+  </body>
+</html>
+
+```
