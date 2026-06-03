@@ -11,6 +11,77 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 
     <style>
+      /* ========================================================
+   ART STYLING UNTUK TOMBOL BACK TO SHOWCASE
+   ======================================================== */
+      .max-width-1100 {
+        max-width: 1100px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .btn-back-art {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #6c757d; /* Warna teks awal abu-abu elegan */
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Lingkaran Ikon */
+      .btn-back-art .icon-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 1px solid #e1ded7;
+        color: var(--color-sage-dark);
+        box-shadow: 0 4px 10px rgba(85, 107, 47, 0.03);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .btn-back-art .text-label {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      /* Garis bawah dekoratif yang muncul saat di-hover */
+      .btn-back-art .text-label::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--color-sage-light);
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+      /* EFFECT SAAT KURSOR DI-HOVER (DISOROT) */
+      .btn-back-art:hover {
+        color: var(--color-sage-dark);
+        transform: translateX(-4px); /* Efek tombol bergeser sedikit ke kiri */
+      }
+
+      .btn-back-art:hover .icon-circle {
+        background-color: var(--color-sage-dark);
+        border-color: var(--color-sage-dark);
+        color: #ffffff; /* Ikon panah berubah jadi putih */
+        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2);
+      }
+
+      .btn-back-art:hover .text-label::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
       :root {
         --color-sage-dark: #556b2f;
         --color-sage-light: #6b8e23;
@@ -295,6 +366,15 @@
     </style>
   </head>
   <body>
+    <!-- Tombol Kembali ke Showcase Utama dengan Sentuhan Art -->
+    <div class="container mt-4 mb-2 max-width-1100">
+      <a href="showcase.html" class="btn-back-art">
+        <span class="icon-circle">
+          <i class="bi bi-arrow-left"></i>
+        </span>
+        <span class="text-label">Back to Showcase</span>
+      </a>
+    </div>
     <div class="deck-wrapper">
       <div class="slide-card active" id="slide-1">
         <div class="text-center my-auto">
