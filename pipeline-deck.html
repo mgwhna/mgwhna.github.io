@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Study: Data Cleaning & Pipelines - Mega Wahana Siboro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+    <style>
+      :root {
+        --color-sage-dark: #556b2f;
+        --color-sage-light: #6b8e23;
+        --color-cream: #fcfbf7;
+        --color-card-bg: #f4f1ea;
+        --color-charcoal: #2b2b2b;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--color-cream);
+        color: var(--color-charcoal);
+        overflow-x: hidden;
+      }
+
+      .script-font {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+
+      /* Slide Deck Container */
+      .deck-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .slide-card {
+        background: #ffffff;
+        border: 1px solid #e1ded7;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(85, 107, 47, 0.06);
+        min-height: 580px;
+        display: none;
+        padding: 50px;
+        position: relative;
+        transition: all 0.4s ease;
+      }
+
+      .slide-card.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+      }
+
+      .project-badge {
+        background-color: rgba(107, 142, 35, 0.12);
+        color: var(--color-sage-dark);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Controls */
+      .controls-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        background: #ffffff;
+        border: 1px solid #e1ded7;
+        padding: 15px 30px;
+        border-radius: 50px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+      }
+
+      .btn-nav {
+        background-color: var(--color-sage-dark);
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-nav:hover {
+        background-color: var(--color-sage-light);
+        transform: translateY(-1px);
+      }
+
+      .btn-nav:disabled {
+        background-color: #d1cbd4;
+        color: #999;
+        transform: none;
+        cursor: not-allowed;
+      }
+
+      .progress-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #e1ded7;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background-color: var(--color-sage-light);
+        width: 24px;
+      }
+
+      .metric-box {
+        background-color: var(--color-cream);
+        border-left: 5px solid var(--color-sage-light);
+        padding: 20px;
+        border-radius: 0 16px 16px 0;
+        height: 100%;
+      }
+
+      .tech-tile {
+        background: var(--color-cream);
+        border: 1px solid #e1ded7;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .tech-tile:hover {
+        border-color: var(--color-sage-light);
+        background: #fff;
+      }
+
+      /* CSS RESPONSIVE BREAKPOINT (MOBILE REPAIR) */
+      @media (max-width: 768px) {
+        .deck-wrapper {
+          margin: 15px auto;
+          padding: 0 10px;
+        }
+
+        .slide-card {
+          min-height: auto;
+          padding: 25px 20px;
+          border-radius: 16px;
+        }
+
+        .slide-card h1.display-4 {
+          font-size: 2rem !important;
+        }
+
+        .slide-card .fs-4 {
+          font-size: 1.1rem !important;
+        }
+
+        .slide-card .d-flex.justify-content-center.w-50 {
+          width: 100% !important;
+          gap: 15px !important;
+        }
+
+        .controls-panel {
+          margin-top: 15px;
+          padding: 8px 15px;
+          border-radius: 30px;
+        }
+
+        .btn-nav {
+          padding: 8px 16px;
+          font-size: 0.85rem;
+        }
+
+        .progress-dots {
+          gap: 4px;
+        }
+
+        .dot {
+          width: 6px;
+          height: 6px;
+        }
+
+        .dot.active {
+          width: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck-wrapper">
+      <div class="slide-card active" id="slide-1">
+        <div class="text-center my-auto">
+          <span class="project-badge mb-4 d-inline-block">Data Engineering & Architecture</span>
+          <h1 class="display-4 fw-bold mb-3 text-dark">Data Cleaning & Pipelines</h1>
+          <p class="fs-4 text-muted script-font mb-5">Automated ETL Pipeline untuk Transformasi Data Mentah Skala Besar</p>
+          <div class="d-flex justify-content-center gap-4 text-secondary small border-top pt-4 w-50 mx-auto">
+            <div><i class="bi bi-person me-2"></i>Mega Wahana Siboro</div>
+            <div><i class="bi bi-calendar3 me-2"></i>Technical Case Study</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card" id="slide-2">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">01. Masalah Kualitas Data</h3>
+            <span class="project-badge">The Dilemma</span>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col-md-7">
+              <p class="fs-5 text-secondary">
+                Lebih dari <span class="text-danger fw-bold">80% waktu analis data</span> habis hanya untuk membersihkan data yang kotor, duplikat, hancur, atau memiliki format tidak konsisten sebelum pemodelan dimulai.
+              </p>
+              <p class="mt-3 text-muted">
+                Pemrosesan data secara manual menggunakan spreadsheet rentan menyebabkan hang/crash jika ukuran data melebihi ratusan ribu baris, serta tidak dapat dijalankan secara berkala untuk kebutuhan data real-time bisnis.
+              </p>
+            </div>
+            <div class="col-md-5">
+              <div class="p-4 bg-light rounded-4 border text-center">
+                <i class="bi bi-trash3 text-danger fs-1 mb-3"></i>
+                <h5 class="fw-bold text-dark">Dampak Data Kotor</h5>
+                <p class="small text-muted mb-0">Menyebabkan hasil visualisasi dashboard salah arah dan membuat performa model machine learning menjadi bias (*Garbage in, Garbage out*).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-3">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">02. Arsitektur Pipeline (ETL)</h3>
+            <span class="project-badge">Data Flow</span>
+          </div>
+          <p class="text-muted small mb-4">Sistem alur otomatisasi pemrosesan data end-to-end terstruktur:</p>
+          <div class="row g-3 text-center my-auto">
+            <div class="col-md-3">
+              <div class="p-4 bg-light border rounded-4">
+                <i class="bi bi-cloud-download fs-2 text-primary mb-2"></i>
+                <h6 class="fw-bold">1. Extract</h6>
+                <span class="badge bg-primary-subtle text-primary small">Multi-Sources Data</span>
+              </div>
+            </div>
+            <div class="col-md-1 d-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
+            </div>
+            <div class="col-md-3">
+              <div class="p-4 bg-light border rounded-4 border-success">
+                <i class="bi bi-node-plus fs-2 text-success mb-2"></i>
+                <h6 class="fw-bold">2. Transform</h6>
+                <span class="badge bg-success-subtle text-success small">KNIME & Pandas Logic</span>
+              </div>
+            </div>
+            <div class="col-md-1 d-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-dark text-white rounded-4 shadow">
+                <i class="bi bi-database-check fs-2 text-warning mb-2"></i>
+                <h6 class="fw-bold">3. Load</h6>
+                <span class="badge bg-warning text-dark small">Analytics-Ready Database</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-4">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">03. Aturan Transformasi & Pembersihan</h3>
+            <span class="project-badge">Data Wrangling</span>
+          </div>
+          <p class="text-muted small">Logika pembersihan data terintegrasi otomatis di dalam pipeline:</p>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-4 bg-light border rounded-4 h-100">
+                <h5 class="fw-bold"><i class="bi bi-magic me-2 text-success"></i>Handling Missing Values</h5>
+                <p class="small text-muted mb-0">Menggunakan metode imputasi median untuk fitur numerik guna menghindari pencilan (outliers), dan imputasi modus atau penandaan khusus "Unknown" untuk fitur kategorikal.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 bg-light border rounded-4 h-100">
+                <h5 class="fw-bold"><i class="bi bi-funnel me-2 text-success"></i>De-duplication & Standardisation</h5>
+                <p class="small text-muted mb-0">Identifikasi otomatis data ganda berdasarkan ID unik transaksi, sinkronisasi format tanggal (YYYY-MM-DD), serta standardisasi penulisan string teks agar seragam.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-5">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">04. Implementasi Skrip Python</h3>
+            <span class="project-badge">Code Architecture</span>
+          </div>
+          <div class="row align-items-center mt-3">
+            <div class="col-md-6">
+              <h4 class="fw-bold text-dark mb-3">VLOOKUP & Merge Automation</h4>
+              <p class="text-muted small">Mengganti fungsi pencarian VLOOKUP tradisional yang lambat di Excel dengan metode penggabungan berkinerja tinggi **`pd.merge()`** di Python Pandas atau via Node Joiner di KNIME.</p>
+              <p class="small text-secondary">Metode ini mampu mencocokkan data antar tabel yang berbeda ukuran struktur dengan kecepatan pemrosesan super singkat tanpa memakan memory berlebih.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 p-4 bg-light rounded-4">
+                <h6 class="fw-bold mb-3"><i class="bi bi-code-square me-2 text-success"></i>Pandas Cleaning Skrip</h6>
+                <pre class="bg-dark text-warning p-3 rounded-3 small mb-0"><code># Drop duplicates & merge data
+df_clean = df.drop_duplicates(subset=['id'])
+df_final = pd.merge(
+    df_clean, ref_table, 
+    on='customer_id', 
+    how='left'
+)
+df_final['status'].fillna('Active', inplace=True)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-6">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">05. Hasil & Dampak Operasional</h3>
+            <span class="project-badge">Measurable Impact</span>
+          </div>
+          <div class="row g-4 justify-content-center text-center mt-3">
+            <div class="col-md-4">
+              <div class="p-4 bg-light rounded-4">
+                <div style="font-size: 3rem; font-weight: 700; color: var(--color-sage-dark)">10x</div>
+                <div class="fw-semibold small text-muted">Lebih Cepat dari Olah Manual</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-light rounded-4">
+                <div style="font-size: 3rem; font-weight: 700; color: var(--color-sage-dark)">100%</div>
+                <div class="fw-semibold small text-muted">Konsistensi Format Terjaga</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-dark text-white rounded-4">
+                <div style="font-size: 3rem; font-weight: 700; color: #ffc107">Ready</div>
+                <div class="fw-semibold small text-warning">Data Siap Pakai untuk BI & ML</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-7">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">06. Spesifikasi Teknologi</h3>
+            <span class="project-badge">Data Stack Used</span>
+          </div>
+          <div class="row row-cols-2 row-cols-md-4 g-3 mt-4">
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-braces me-2 text-primary"></i>Python 3</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-gear-fill me-2 text-info"></i>KNIME Analytics</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-table me-2 text-success"></i>Pandas Dataframe</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-calculator me-2 text-danger"></i>NumPy Calculations</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-database-fill me-2 text-dark"></i>PostgreSQL / SQL</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-filetype-csv me-2 text-warning"></i>CSV / Excel Gateway</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-terminal-fill me-2 text-secondary"></i>Git Engine</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-clock-history me-2 text-success"></i>Automated Cron Jobs</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
+      </div>
+
+      <div class="slide-card" id="slide-7">
+        <div class="text-center my-auto">
+          <h1 class="display-5 fw-bold text-dark mb-3">Terima Kasih</h1>
+          <p class="text-muted fs-5 mb-4">Membangun fondasi data yang kokoh, bersih, dan tepercaya untuk keputusan bisnis strategis.</p>
+          <div class="p-3 bg-light rounded-pill d-inline-block px-5 border"><span class="fw-semibold text-success-custom">Mega Wahana Siboro</span> &nbsp;|&nbsp; <i class="bi bi-envelope me-1"></i> informatics.mw@gmail.com</div>
+        </div>
+        <div class="text-muted small text-center w-100">Analytics by MW &copy; 2026</div>
+      </div>
+
+      <div class="controls-panel">
+        <button class="btn-nav" id="btn-prev" onclick="moveSlide(-1)" disabled><i class="bi bi-arrow-left me-2"></i>Prev</button>
+
+        <div class="progress-dots" id="dots-container"></div>
+
+        <button class="btn-nav" id="btn-next" onclick="moveSlide(1)">Next<i class="bi bi-arrow-right ms-2"></i></button>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 8;
+
+      const dotsContainer = document.getElementById("dots-container");
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 1) dot.classList.add("active");
+        dot.setAttribute("onclick", `goToSlide(${i})`);
+        dot.setAttribute("id", `dot-${i}`);
+        dotsContainer.appendChild(dot);
+      }
+
+      function updateSlideUI() {
+        for (let i = 1; i <= totalSlides; i++) {
+          // Gunakan seleksi fleksibel karena ID slide berurutan
+          const slideElement = document.getElementsByClassName("slide-card")[i - 1];
+          if (slideElement) slideElement.classList.remove("active");
+          document.getElementById(`dot-${i}`).classList.remove("active");
+        }
+
+        const activeSlide = document.getElementsByClassName("slide-card")[currentSlide - 1];
+        if (activeSlide) activeSlide.classList.add("active");
+        document.getElementById(`dot-${currentSlide}`).classList.add("active");
+
+        document.getElementById("btn-prev").disabled = currentSlide === 1;
+        document.getElementById("btn-next").disabled = currentSlide === totalSlides;
+      }
+
+      function moveSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 1) currentSlide = 1;
+        if (currentSlide > totalSlides) currentSlide = totalSlides;
+        updateSlideUI();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateSlideUI();
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight" && currentSlide < totalSlides) {
+          moveSlide(1);
+        } else if (event.key === "ArrowLeft" && currentSlide > 1) {
+          moveSlide(-1);
+        }
+      });
+    </script>
+  </body>
+</html>
