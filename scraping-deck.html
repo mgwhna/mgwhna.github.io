@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Study: Automated Web Scraping Tools - Mega Wahana Siboro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2 family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+    <style>
+      :root {
+        --color-sage-dark: #556b2f;
+        --color-sage-light: #6b8e23;
+        --color-cream: #fcfbf7;
+        --color-card-bg: #f4f1ea;
+        --color-charcoal: #2b2b2b;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--color-cream);
+        color: var(--color-charcoal);
+        overflow-x: hidden;
+      }
+
+      .script-font {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+
+      /* Slide Deck Container */
+      .deck-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .slide-card {
+        background: #ffffff;
+        border: 1px solid #e1ded7;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(85, 107, 47, 0.06);
+        min-height: 580px;
+        display: none;
+        padding: 50px;
+        position: relative;
+        transition: all 0.4s ease;
+      }
+
+      .slide-card.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+      }
+
+      .project-badge {
+        background-color: rgba(107, 142, 35, 0.12);
+        color: var(--color-sage-dark);
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Controls */
+      .controls-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        background: #ffffff;
+        border: 1px solid #e1ded7;
+        padding: 15px 30px;
+        border-radius: 50px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+      }
+
+      .btn-nav {
+        background-color: var(--color-sage-dark);
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-nav:hover {
+        background-color: var(--color-sage-light);
+        transform: translateY(-1px);
+      }
+
+      .btn-nav:disabled {
+        background-color: #d1cbd4;
+        color: #999;
+        transform: none;
+        cursor: not-allowed;
+      }
+
+      .progress-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #e1ded7;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background-color: var(--color-sage-light);
+        width: 24px;
+      }
+
+      .metric-box {
+        background-color: var(--color-cream);
+        border-left: 5px solid var(--color-sage-light);
+        padding: 20px;
+        border-radius: 0 16px 16px 0;
+        height: 100%;
+      }
+
+      .metric-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--color-sage-dark);
+        line-height: 1;
+        margin-bottom: 5px;
+      }
+
+      .tech-tile {
+        background: var(--color-cream);
+        border: 1px solid #e1ded7;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .tech-tile:hover {
+        border-color: var(--color-sage-light);
+        background: #fff;
+      }
+
+      /* Speed Comparison Chart */
+      .bar-chart-mock {
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+        height: 200px;
+        padding-top: 20px;
+        border-bottom: 2px solid #ccc;
+      }
+
+      .chart-bar {
+        flex: 1;
+        background-color: #e1ded7;
+        border-radius: 8px 8px 0 0;
+        position: relative;
+        animation: growBar 1s ease-out;
+      }
+
+      .chart-bar.accent {
+        background-color: #cc4444; /* Red representing wasted manual time */
+      }
+
+      .chart-bar.success-accent {
+        background-color: var(--color-sage-dark); /* Green representing automated speed */
+      }
+
+      .chart-label {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+
+      .chart-value {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      @keyframes growBar {
+        from {
+          height: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck-wrapper">
+      <div class="slide-card active" id="slide-1">
+        <div class="text-center my-auto">
+          <span class="project-badge mb-4 d-inline-block">Automation & Data Engineering Presentation</span>
+          <h1 class="display-4 fw-bold mb-3 text-dark">Automated Web Scraping Tools</h1>
+          <p class="fs-4 text-muted script-font mb-5">Skrip Ekstraksi Data Intelijen Pasar Skala Besar Secara Real-Time</p>
+          <div class="d-flex justify-content-center gap-4 text-secondary small border-top pt-4 w-50 mx-auto">
+            <div><i class="bi bi-person me-2"></i>Mega Wahana Siboro</div>
+            <div><i class="bi bi-calendar3 me-2"></i>Project Case Study</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card" id="slide-2">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">01. Masalah Operasional</h3>
+            <span class="project-badge">Tantangan Analisis Pasar</span>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col-md-7">
+              <p class="fs-5 leading-relaxed text-secondary">
+                Pemantauan harga kompetitor dan tren komoditas di platform e-commerce jika dilakukan secara manual membutuhkan waktu hingga <span class="text-danger fw-bold">berjam-jam setiap harinya</span>.
+              </p>
+              <p class="mt-3 text-muted">
+                Selain lambat, data yang disalin secara manual rentan terhadap kesalahan ketik (*human error*), serta struktur halaman web yang sering berubah dapat menyebabkan hilangnya momentum keputusan bisnis yang krusial.
+              </p>
+            </div>
+            <div class="col-md-5">
+              <div class="p-4 bg-light rounded-4 border border-warning-subtle text-center">
+                <i class="bi bi-shield-slash-fill text-warning fs-1 mb-3"></i>
+                <h5 class="fw-bold text-dark">Blokade Sistem</h5>
+                <p class="small text-muted mb-0">Adanya proteksi IP blocking, Captcha, dan pemuatan konten berbasis JavaScript (Dynamic DOM) yang menyulitkan pengumpulan data teratur.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-3">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">02. Solusi & Sasaran Skrip</h3>
+            <span class="project-badge">Objektif Utama</span>
+          </div>
+          <div class="row g-4 mt-2">
+            <div class="col-md-4">
+              <div class="metric-box">
+                <div class="fs-4 fw-bold mb-2">100% Otonom</div>
+                <p class="small text-muted">Skrip berjalan otomatis secara berkala sesuai waktu yang dijadwalkan (Cron Job) tanpa intervensi manusia.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="metric-box">
+                <div class="fs-4 fw-bold mb-2">Anti-Bot Bypass</div>
+                <p class="small text-muted">Mengimplementasikan rotasi User-Agent dan manajemen jeda dinamis untuk menghindari deteksi pemblokiran server.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="metric-box">
+                <div class="fs-4 fw-bold mb-2">Auto-Formatting</div>
+                <p class="small text-muted">Hasil ekstraksi langsung dibersihkan dan distrukturkan ke dalam format siap pakai seperti CSV/Excel database.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-4">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">03. Alur Arsitektur Scraping</h3>
+            <span class="project-badge">Data Pipeline Flow</span>
+          </div>
+          <p class="text-muted small mb-4">Proses transformasi dari halaman web mentah hingga menjadi laporan analisis data bersih:</p>
+          <div class="row g-3 text-center my-auto">
+            <div class="col-md-3">
+              <div class="p-4 bg-light border rounded-4">
+                <i class="bi bi-globe2 fs-2 text-primary mb-2"></i>
+                <h6 class="fw-bold">1. Target Request</h6>
+                <span class="badge bg-primary-subtle text-primary small">Dynamic Content Injection</span>
+              </div>
+            </div>
+            <div class="col-md-1 d-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
+            </div>
+            <div class="col-md-3">
+              <div class="p-4 bg-light border rounded-4 border-success">
+                <i class="bi bi-regex fs-2 text-success mb-2"></i>
+                <h6 class="fw-bold">2. Parsing HTML</h6>
+                <span class="badge bg-success-subtle text-success small">DOM Tree Extraction</span>
+              </div>
+            </div>
+            <div class="col-md-1 d-flex align-items-center justify-content-center">
+              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-dark text-white rounded-4 shadow">
+                <i class="bi bi-file-earmark-excel fs-2 text-warning mb-2"></i>
+                <h6 class="fw-bold">3. Normalisasi Data</h6>
+                <span class="badge bg-warning text-dark small">Clean Structured CSV</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-5">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">04. Strategi Konten Dinamis</h3>
+            <span class="project-badge">Overcoming Hurdles</span>
+          </div>
+          <div class="row align-items-center mt-3">
+            <div class="col-md-6">
+              <h4 class="fw-bold text-dark mb-3">BeautifulSoup vs Selenium</h4>
+              <p class="text-muted small">
+                Untuk web statis, skrip menggunakan metode **BeautifulSoup** demi performa kecepatan maksimal. Namun pada platform e-commerce modern dengan proteksi ketat, skrip beralih memanfaatkan **Headless Selenium/Playwright** untuk
+                mensimulasikan gerakan klik dan scroll manusia secara nyata.
+              </p>
+              <ul class="small text-secondary ps-3">
+                <li class="mb-2">Implementasi <em>Explicit Waits</em> untuk menjamin komponen termuat sempurna sebelum diekstrak.</li>
+                <li class="mb-2">Rotasi proxy terintegrasi otomatis.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 p-4 bg-light rounded-4">
+                <h6 class="fw-bold mb-3"><i class="bi bi-code-square me-2 text-success"></i>Wait Logic Implementation</h6>
+                <pre class="bg-dark text-warning p-3 rounded-3 small mb-0"><code>from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+element = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_color((By.CLASS_NAME, "product-price"))
+)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-6">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">05. Pembersihan Data Menggunakan Pandas</h3>
+            <span class="project-badge">Regex & Formatting</span>
+          </div>
+          <p class="text-muted text-sm">Data mentah dari hasil scraping biasanya kotor (mengandung simbol mata uang, teks tambahan, atau spasi berlebih). Skrip secara otomatis menanganinya melalui pipeline pembersihan:</p>
+          <div class="table-responsive mt-3">
+            <table class="table table-bordered align-middle text-sm" style="font-size: 0.9rem">
+              <thead class="table-light">
+                <tr>
+                  <th>Kondisi Data Mentah (Raw HTML)</th>
+                  <th>Metode Regex / Pembersihan</th>
+                  <th>Hasil Bersih (Structured Output)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-danger">"Rp&nbsp;150.000,-"</td>
+                  <td><code>.replace('Rp','').replace('.','')</code></td>
+                  <td class="text-success fw-bold">150000 (Integer)</td>
+                </tr>
+                <tr>
+                  <td class="text-danger">" Terjual 1,2rb+ pcs "</td>
+                  <td>Ekstraksi angka & perkalian pengali ribuan</td>
+                  <td class="text-success fw-bold">1200 (Integer)</td>
+                </tr>
+                <tr>
+                  <td class="text-danger">"Bawang Besar [STOK READY] "</td>
+                  <td><code>.str.strip()</code> & pembersihan tag kurung</td>
+                  <td class="text-success fw-bold">"Bawang Besar" (String)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-7">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">06. Performa & Perbandingan Efisiensi</h3>
+            <span class="project-badge">Time Optimization</span>
+          </div>
+          <div class="row align-items-center mt-3">
+            <div class="col-md-6">
+              <h5 class="fw-bold text-dark mb-3">Efisiensi Waktu Kerja</h5>
+              <p class="text-muted small">Dengan mengotomatiskan proses penarikan data 500 item produk harian, waktu operasional yang dihemat mencapai lebih dari **95%** dibandingkan tenaga kerja manual.</p>
+              <div class="d-flex gap-3 mt-4">
+                <div class="p-3 bg-light rounded text-center flex-fill">
+                  <div class="fs-3 fw-bold text-danger">180 Menit</div>
+                  <div class="text-muted" style="font-size: 0.75rem">Manual Copy-Paste</div>
+                </div>
+                <div class="p-3 bg-light rounded text-center flex-fill">
+                  <div class="fs-3 fw-bold text-success">4.2 Menit</div>
+                  <div class="text-muted" style="font-size: 0.75rem">Automated Script</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p class="text-muted small text-center mb-1">Durasi Proses Pengumpulan Data (Menit)</p>
+              <div class="bar-chart-mock">
+                <div class="chart-bar accent" style="height: 90%">
+                  <span class="chart-value">180 m</span>
+                  <span class="chart-label">Metode Manual</span>
+                </div>
+                <div class="chart-bar success-accent" style="height: 10%">
+                  <span class="chart-value">4.2 m</span>
+                  <span class="chart-label">Skrip Otomatis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small" style="margin-top: 30px">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-8">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">07. Manfaat Strategis untuk Bisnis</h3>
+            <span class="project-badge">Value Realization</span>
+          </div>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-4 border rounded-4 bg-light h-100">
+                <h5 class="fw-bold text-dark"><i class="bi bi-graph-up-arrow me-2 text-success"></i>Dynamic Pricing Radar</h5>
+                <p class="small text-muted mb-0">Memberikan keunggulan kompetitif berupa notifikasi real-time jika kompetitor mengubah harga pasar, memungkinkan penyesuaian strategi harga toko dalam hitungan menit.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-4 border rounded-4 bg-light h-100">
+                <h5 class="fw-bold text-dark"><i class="bi bi-box-seam me-2 text-success"></i>Monitoring Tren Supply</h5>
+                <p class="small text-muted mb-0">Mendeteksi produk e-commerce atau komoditas yang sedang mengalami lonjakan penjualan tinggi secara mingguan guna mengoptimalkan perencanaan stok inventaris gudang.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-9">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">08. Metrik Keberhasilan Implementasi</h3>
+            <span class="project-badge">Impact Figures</span>
+          </div>
+          <div class="row g-4 justify-content-center text-center mt-3">
+            <div class="col-md-4">
+              <div class="p-4 bg-light rounded-4">
+                <div class="metric-number">0%</div>
+                <div class="fw-semibold small text-muted">Kesalahan input data (Human Error)</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-light rounded-4">
+                <div class="metric-number">10K+</div>
+                <div class="fw-semibold small text-muted">Baris Data Diekstrak Per Minggu</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-dark text-white rounded-4">
+                <div class="metric-number text-warning">24/7</div>
+                <div class="fw-semibold small text-warning">Pemantauan Otomatis Non-stop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-10">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">09. Rencana Pengembangan Lanjutan</h3>
+            <span class="project-badge">Scalability Road</span>
+          </div>
+          <div class="ps-3 border-start border-3 border-success-subtle mt-4">
+            <h5 class="fw-bold mb-1">Tahap 1: Deployment ke Cloud Server Engine</h5>
+            <p class="small text-muted mb-4">Memindahkan eksekusi skrip lokal ke Docker container di Cloud VPS (misal AWS/DigitalOcean) agar pemantauan berjalan stabil tanpa membebani komputer pribadi.</p>
+
+            <h5 class="fw-bold mb-1">Tahap 2: Integrasi Dashboard Interaktif</h5>
+            <p class="small text-muted mb-0">Menghubungkan data mentah CSV hasil scraping secara berkala ke visualisasi Power BI atau Looker Studio untuk pelaporan eksekutif yang instan.</p>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-11">
+        <div>
+          <div class="slide-header">
+            <h3 class="fw-bold mb-0">10. Spesifikasi Teknologi</h3>
+            <span class="project-badge">Automation Stack</span>
+          </div>
+          <div class="row row-cols-2 row-cols-md-4 g-3 mt-4">
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-braces me-2 text-primary"></i>Python 3</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-bug me-2 text-success"></i>BeautifulSoup 4</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-browser-chrome me-2 text-info"></i>Selenium Grid</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-code me-2 text-danger"></i>Requests API</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-table me-2 text-success"></i>Pandas (Dataframe)</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-clock me-2 text-dark"></i>Cron Jobs / Tasks</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-terminal-fill me-2 text-secondary"></i>Git Version Control</div>
+            </div>
+            <div class="col">
+              <div class="tech-tile"><i class="bi bi-filetype-csv me-2 text-warning"></i>Structured CSV</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+      </div>
+
+      <div class="slide-card" id="slide-12">
+        <div class="text-center my-auto">
+          <h1 class="display-5 fw-bold text-dark mb-3">Terima Kasih</h1>
+          <p class="text-muted fs-5 mb-4">Membangun keunggulan bisnis melalui otomatisasi data yang cerdas.</p>
+          <div class="p-3 bg-light rounded-pill d-inline-block px-5 border"><span class="fw-semibold text-success-custom">Mega Wahana Siboro</span> &nbsp;|&nbsp; <i class="bi bi-envelope me-1"></i> informatics.mw@gmail.com</div>
+        </div>
+        <div class="text-muted small text-center w-100">Analytics by MW &copy; 2026</div>
+      </div>
+
+      <div class="controls-panel">
+        <button class="btn-nav" id="btn-prev" onclick="moveSlide(-1)" disabled><i class="bi bi-arrow-left me-2"></i>Prev</button>
+
+        <div class="progress-dots" id="dots-container"></div>
+
+        <button class="btn-nav" id="btn-next" onclick="moveSlide(1)">Next<i class="bi bi-arrow-right ms-2"></i></button>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 12;
+
+      const dotsContainer = document.getElementById("dots-container");
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (i === 1) dot.classList.add("active");
+        dot.setAttribute("onclick", `goToSlide(${i})`);
+        dot.setAttribute("id", `dot-${i}`);
+        dotsContainer.appendChild(dot);
+      }
+
+      function updateSlideUI() {
+        for (let i = 1; i <= totalSlides; i++) {
+          document.getElementById(`slide-${i}`).classList.remove("active");
+          document.getElementById(`dot-${i}`).classList.remove("active");
+        }
+
+        document.getElementById(`slide-${currentSlide}`).classList.add("active");
+        document.getElementById(`dot-${currentSlide}`).classList.add("active");
+
+        document.getElementById("btn-prev").disabled = currentSlide === 1;
+        document.getElementById("btn-next").disabled = currentSlide === totalSlides;
+      }
+
+      function moveSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 1) currentSlide = 1;
+        if (currentSlide > totalSlides) currentSlide = totalSlides;
+        updateSlideUI();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateSlideUI();
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight" && currentSlide < totalSlides) {
+          moveSlide(1);
+        } else if (event.key === "ArrowLeft" && currentSlide > 1) {
+          moveSlide(-1);
+        }
+      });
+    </script>
+  </body>
+</html>
