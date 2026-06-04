@@ -3,86 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Case Study: Predictive Analytics Model - Mega Wahana Siboro</title>
+    <title>Case Study: Predictive Analytics Model (Minat Baca Anak) - Mega Wahana Siboro</title>
     <!-- CSS External -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2 family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 
     <style>
-      /* ========================================================
-   ART STYLING UNTUK TOMBOL BACK TO SHOWCASE
-   ======================================================== */
-      .max-width-1100 {
-        max-width: 1100px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .btn-back-art {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #6c757d; /* Warna teks awal abu-abu elegan */
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* Lingkaran Ikon */
-      .btn-back-art .icon-circle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background-color: #ffffff;
-        border: 1px solid #e1ded7;
-        color: var(--color-sage-dark);
-        box-shadow: 0 4px 10px rgba(85, 107, 47, 0.03);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .btn-back-art .text-label {
-        position: relative;
-        transition: color 0.3s ease;
-      }
-
-      /* Garis bawah dekoratif yang muncul saat di-hover */
-      .btn-back-art .text-label::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--color-sage-light);
-        transform-origin: bottom right;
-        transition: transform 0.25s ease-out;
-      }
-
-      /* EFFECT SAAT KURSOR DI-HOVER (DISOROT) */
-      .btn-back-art:hover {
-        color: var(--color-sage-dark);
-        transform: translateX(-4px); /* Efek tombol bergeser sedikit ke kiri */
-      }
-
-      .btn-back-art:hover .icon-circle {
-        background-color: var(--color-sage-dark);
-        border-color: var(--color-sage-dark);
-        color: #ffffff; /* Ikon panah berubah jadi putih */
-        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2);
-      }
-
-      .btn-back-art:hover .text-label::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-      }
       :root {
         --color-sage-dark: #556b2f;
         --color-sage-light: #6b8e23;
@@ -116,7 +45,7 @@
         border-radius: 24px;
         box-shadow: 0 15px 35px rgba(85, 107, 47, 0.06);
         min-height: 580px;
-        display: none; /* Controlled by JS */
+        display: none;
         padding: 50px;
         position: relative;
         transition: all 0.4s ease;
@@ -140,7 +69,6 @@
         }
       }
 
-      /* Top Slide Header */
       .slide-header {
         display: flex;
         justify-content: space-between;
@@ -161,7 +89,7 @@
         letter-spacing: 1px;
       }
 
-      /* Controls */
+      /* Controls Navigation Panel */
       .controls-panel {
         display: flex;
         justify-content: space-between;
@@ -215,21 +143,12 @@
         width: 24px;
       }
 
-      /* Custom UI Blocks */
       .metric-box {
         background-color: var(--color-cream);
         border-left: 5px solid var(--color-sage-light);
         padding: 20px;
         border-radius: 0 16px 16px 0;
         height: 100%;
-      }
-
-      .metric-number {
-        font-size: 3rem;
-        font-weight: 700;
-        color: var(--color-sage-dark);
-        line-height: 1;
-        margin-bottom: 5px;
       }
 
       .tech-tile {
@@ -247,98 +166,109 @@
         background: #fff;
       }
 
-      /* Abstract Chart representation */
-      .bar-chart-mock {
+      .max-width-1100 {
+        max-width: 1100px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .btn-back-art {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #6c757d;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .btn-back-art .icon-circle {
         display: flex;
-        align-items: flex-end;
-        gap: 20px;
-        height: 200px;
-        padding-top: 20px;
-        border-bottom: 2px solid #ccc;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 1px solid #e1ded7;
+        color: var(--color-sage-dark);
+        box-shadow: 0 4px 10px rgba(85, 107, 47, 0.03);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .chart-bar {
-        flex: 1;
-        background-color: var(--color-sage-light);
-        border-radius: 8px 8px 0 0;
+      .btn-back-art .text-label {
         position: relative;
-        animation: growBar 1s ease-out;
+        transition: color 0.3s ease;
       }
 
-      .chart-bar.accent {
+      .btn-back-art .text-label::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--color-sage-light);
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+      .btn-back-art:hover {
+        color: var(--color-sage-dark);
+        transform: translateX(-4px);
+      }
+
+      .btn-back-art:hover .icon-circle {
         background-color: var(--color-sage-dark);
+        border-color: var(--color-sage-dark);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(85, 107, 47, 0.2);
       }
 
-      .chart-label {
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.8rem;
-        white-space: nowrap;
+      .btn-back-art:hover .text-label::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
       }
 
-      .chart-value {
-        position: absolute;
-        top: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.85rem;
-        font-weight: 600;
-      }
-
-      @keyframes growBar {
-        from {
-          height: 0;
-        }
-      }
-
-      /* ========================================================
-   KODE PERBAIKAN RESPONSIVE MODE (MOBILE & TABLET)
-   ======================================================== */
+      /* RESPONSIVE REPAIR (MOBILE FIX) */
       @media (max-width: 768px) {
-        /* 1. Mengurangi jarak luar container agar pas di layar HP */
         .deck-wrapper {
           margin: 15px auto;
           padding: 0 10px;
         }
 
-        /* 2. Menghilangkan paksaan tinggi statis & memperkecil padding kartu */
         .slide-card {
-          min-height: auto; /* Membiarkan tinggi kartu mengikuti isi teks secara alami */
-          padding: 25px 20px; /* Memperkecil padding dari 50px menjadi 20-25px */
+          min-height: auto;
+          padding: 25px 20px;
           border-radius: 16px;
         }
 
-        /* 3. Menyesuaikan teks judul agar tidak terlalu raksasa di HP */
-        .slide-card h1.display-4 {
-          font-size: 2rem !important;
+        .slide-card h1.slide-main-title {
+          font-size: 1.8rem !important;
         }
 
         .slide-card .fs-4 {
           font-size: 1.1rem !important;
         }
 
-        /* 4. Memperbaiki tampilan bagian nama/footer slide agar tidak berdesakan */
         .slide-card .d-flex.justify-content-center.w-50 {
-          width: 100% !important; /* Memaksa area mengambil 100% lebar layar HP */
+          width: 100% !important;
           gap: 15px !important;
         }
 
-        /* 5. Merapikan panel navigasi bawah agar tidak memotong layar */
         .controls-panel {
           margin-top: 15px;
           padding: 8px 15px;
           border-radius: 30px;
         }
 
-        /* 6. Memperkecil tombol navigasi di HP agar tidak menutupi titik progress */
         .btn-nav {
           padding: 8px 16px;
           font-size: 0.85rem;
         }
 
-        /* 7. Memperkecil jarak antar titik indikator */
         .progress-dots {
           gap: 4px;
         }
@@ -351,22 +281,11 @@
         .dot.active {
           width: 14px;
         }
-
-        /* 8. Menata ulang visual bagan/chart performa (jika ada) agar ramah mobile */
-        .bar-chart-mock {
-          height: 150px;
-          gap: 10px;
-        }
-
-        .chart-label {
-          font-size: 0.7rem;
-          bottom: -25px;
-        }
       }
     </style>
   </head>
   <body>
-    <!-- Tombol Kembali ke Showcase Utama dengan Sentuhan Art -->
+    <!-- Tombol Kembali ke Showcase Utama -->
     <div class="container mt-4 mb-2 max-width-1100">
       <a href="showcase.html" class="btn-back-art">
         <span class="icon-circle">
@@ -375,355 +294,192 @@
         <span class="text-label">Back to Showcase</span>
       </a>
     </div>
+
     <div class="deck-wrapper">
       <!-- SLIDE 1: TITLE SLIDE -->
       <div class="slide-card active" id="slide-1">
         <div class="text-center my-auto">
-          <span class="project-badge mb-4 d-inline-block">Data Science Presentation</span>
-          <h1 class="display-4 fw-bold mb-3 text-dark">Predictive Analytics Model</h1>
-          <p class="fs-4 text-muted script-font mb-5">Infrastruktur Klasifikasi & Prediksi Transaksi Pelanggan Skala Besar</p>
+          <span class="project-badge mb-4 d-inline-block">Data Science Case Study</span>
+          <h1 class="fw-bold mb-3 text-dark slide-main-title" style="font-size: 2.4rem">Predictive Analytics: Minat Baca Anak</h1>
+          <p class="fs-4 text-muted script-font mb-5">Klasifikasi Faktor Daya Trik Membaca Menggunakan Komparasi KNN & AdaBoost</p>
           <div class="d-flex justify-content-center gap-4 text-secondary small border-top pt-4 w-50 mx-auto">
             <div><i class="bi bi-person me-2"></i>Mega Wahana Siboro</div>
-            <div><i class="bi bi-calendar3 me-2"></i>Project Case Study</div>
+            <div><i class="bi bi-calendar3 me-2"></i>Technical Presentation</div>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 2: THE CHALLENGE -->
+      <!-- SLIDE 2: PROBLEM STATEMENT -->
       <div class="slide-card" id="slide-2">
         <div>
           <div class="slide-header">
-            <h3 class="fw-bold mb-0">01. Tantangan Bisnis</h3>
-            <span class="project-badge">Problem Statement</span>
+            <h3 class="fw-bold mb-0">01. Latar Belakang & Masalah</h3>
+            <span class="project-badge">Context</span>
           </div>
           <div class="row align-items-center mt-4">
             <div class="col-md-7">
-              <p class="fs-5 leading-relaxed text-secondary">
-                Perusahaan konvensional seringkali mengalami kerugian besar akibat tingginya angka kehilangan pelanggan (<span class="text-dark fw-bold">Customer Churn</span>) tanpa sempat melakukan tindakan pencegahan preventif.
-              </p>
+              <p class="fs-5 text-secondary">Rendahnya minat baca pada anak sering kali sulit diintervensi karena <span class="text-danger fw-bold">minimnya pemetaan faktor dominan</span> yang membuat anak tertarik pada buku.</p>
               <p class="mt-3 text-muted">
-                Tanpa sistem otomatis, tim pemasaran membuang biaya iklan secara acak kepada target pasar yang tidak relevan, mengakibatkan inefisiensi alokasi anggaran hingga <strong class="text-danger">40%</strong>.
+                Studi kasus ini memanfaatkan data indikator perilaku (seperti ketersediaan buku ilustrasi, durasi *screen time*, metode bercerita orang tua, dan lingkungan sekolah) untuk membangun model klasifikasi prediktif. Model ini
+                berfungsi mendeteksi tingkat daya tarik membaca anak secara dini agar strategi edukasi bisa diberikan tepat sasaran.
               </p>
             </div>
             <div class="col-md-5">
-              <div class="p-4 bg-light rounded-4 border border-danger-subtle text-center">
-                <i class="bi bi-exclamation-triangle-fill text-danger fs-1 mb-3"></i>
-                <h5 class="fw-bold text-danger">Akar Masalah</h5>
-                <p class="small text-muted mb-0">Raw data transaksional tertimbun secara silo tanpa adanya ekstraksi pola perilaku konsumen aktif.</p>
+              <div class="p-4 bg-light rounded-4 border text-center">
+                <i class="bi bi-book-half text-success fs-1 mb-3"></i>
+                <h5 class="fw-bold text-dark">Urgenitas Proyek</h5>
+                <p class="small text-muted mb-0">Mengubah pendekatan tebakan konvensional menjadi keputusan berbasis data riil demi mengoptimalkan budaya literasi anak.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
 
-      <!-- SLIDE 3: STRATEGIC OBJECTIVES -->
+      <!-- SLIDE 3: DATA PREPROCESSING & FEATURES -->
       <div class="slide-card" id="slide-3">
         <div>
           <div class="slide-header">
-            <h3 class="fw-bold mb-0">02. Objektif Strategis</h3>
-            <span class="project-badge">Goals</span>
+            <h3 class="fw-bold mb-0">02. Variabel & Pra-pemrosesan Data</h3>
+            <span class="project-badge">Data Preparation</span>
           </div>
           <div class="row g-4 mt-2">
             <div class="col-md-4">
               <div class="metric-box">
-                <div class="fs-4 fw-bold mb-2">Automasi Sistem</div>
-                <p class="small text-muted">Membangun pipeline data end-to-end dari database mentah hingga menghasilkan keputusan siap pakai.</p>
+                <div class="fs-5 fw-bold mb-2">Fitur Prediktor (X)</div>
+                <p class="small text-muted">Variabel meliputi: Frekuensi mendongeng orang tua, Rasio buku bergambar, Jam akses gawai, dan Ketersediaan pojok baca rumah.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="metric-box">
-                <div class="fs-4 fw-bold mb-2">Akurasi Tinggi</div>
-                <p class="small text-muted">Memastikan model klasifikasi memiliki tingkat presisi di atas 85% untuk menghindari kesalahan target kampanye.</p>
+                <div class="fs-5 fw-bold mb-2">Target Label (Y)</div>
+                <p class="small text-muted">Status daya tarik membaca anak yang dikategorikan menjadi dua kelas biner: **Tinggi (1)** atau **Rendah (0)**.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="metric-box">
-                <div class="fs-4 fw-bold mb-2">Optimasi Biaya</div>
-                <p class="small text-muted">Menurunkan customer acquisition cost (CAC) dan memaksimalkan ROI retensi pelanggan.</p>
+                <div class="fs-5 fw-bold mb-2">Pipeline Preprocessing</div>
+                <p class="small text-muted">Normalisasi skala jam dengan *MinMaxScaler*, imputasi nilai kosong, dan pengkodean kategori via kuesioner digital.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
 
-      <!-- SLIDE 4: DATA ARCHITECTURE -->
+      <!-- SLIDE 4: ALGORITHM APPROACH -->
       <div class="slide-card" id="slide-4">
         <div>
           <div class="slide-header">
-            <h3 class="fw-bold mb-0">03. Arsitektur Data</h3>
-            <span class="project-badge">Data Flow Diagram</span>
+            <h3 class="fw-bold mb-0">03. Pendekatan Komparasi Model</h3>
+            <span class="project-badge">Modeling Strategy</span>
           </div>
-          <p class="text-muted small mb-4">Pipeline pemrosesan terisolasi untuk menjaga integritas data:</p>
-          <div class="row g-3 text-center my-auto">
-            <div class="col-md-3">
-              <div class="p-4 bg-light border rounded-4">
-                <i class="bi bi-database fs-2 text-secondary mb-2"></i>
-                <h6 class="fw-bold">1. Data Sources</h6>
-                <span class="badge bg-secondary-subtle text-secondary small">SQL / CSV</span>
+          <p class="text-muted small">Menerapkan dua metode dengan cara kerja matematis berbeda untuk mencari model paling presisi:</p>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-4 bg-light border rounded-4 h-100">
+                <h5 class="fw-bold"><i class="bi bi-diagram-3 me-2 text-success"></i>K-Nearest Neighbors (KNN)</h5>
+                <p class="small text-muted mb-0">Mengklasifikasikan minat baca anak baru berdasarkan kesamaan pola perilaku terdekat dari karakteristik anak-anak lain di sekitarnya menggunakan perhitungan metrik jarak Euclidean.</p>
               </div>
             </div>
-            <div class="col-md-1 d-flex align-items-center justify-content-center">
-              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
-            </div>
-            <div class="col-md-3">
-              <div class="p-4 bg-light border rounded-4 border-success">
-                <i class="bi bi-lightning-charge fs-2 text-success mb-2"></i>
-                <h6 class="fw-bold">2. ETL Pipeline</h6>
-                <span class="badge bg-success-subtle text-success small">Python / KNIME</span>
-              </div>
-            </div>
-            <div class="col-md-1 d-flex align-items-center justify-content-center">
-              <i class="bi bi-arrow-right fs-3 text-muted d-none d-md-block"></i>
-            </div>
-            <div class="col-md-4">
-              <div class="p-4 bg-dark text-white rounded-4 shadow">
-                <i class="bi bi-cpu fs-2 text-warning mb-2"></i>
-                <h6 class="fw-bold">3. Model Training</h6>
-                <span class="badge bg-warning text-dark small">ML Classification</span>
+            <div class="col-md-6">
+              <div class="p-4 bg-light border rounded-4 h-100">
+                <h5 class="fw-bold"><i class="bi bi-layers me-2 text-success"></i>AdaBoost Classifier</h5>
+                <p class="small text-muted mb-0">Teknik *Ensemble* sekuensial yang terus-menerus memperbaiki kesalahan prediksi model pohon keputusan (*Decision Stump*) sebelumnya, fokus mengenali kombinasi pemicu anak malas membaca.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
 
-      <!-- SLIDE 5: METHODOLOGY -->
+      <!-- SLIDE 5: EVALUATION MATRIX -->
       <div class="slide-card" id="slide-5">
         <div>
           <div class="slide-header">
-            <h3 class="fw-bold mb-0">04. Metodologi Pengembangan</h3>
-            <span class="project-badge">Algorithm Choice</span>
+            <h3 class="fw-bold mb-0">04. Hasil Evaluasi Performa</h3>
+            <span class="project-badge">Evaluation Results</span>
           </div>
-          <div class="row align-items-center mt-3">
-            <div class="col-md-6">
-              <h4 class="fw-bold text-dark mb-3">Pendekatan Supervised Learning</h4>
-              <p class="text-muted small">
-                Menguji beberapa algoritma klasifikasi terbaik termasuk <strong>K-Nearest Neighbors (KNN)</strong> dan <strong>AdaBoost Classifier</strong> untuk mendapatkan performa komparatif paling optimal dalam mengenali karakteristik
-                churn pelanggan.
-              </p>
-              <ul class="small text-secondary ps-3">
-                <li class="mb-2">Cross-Validation 5-Fold untuk mencegah overfitting.</li>
-                <li class="mb-2">SMOTE Optimization untuk menangani data target yang tidak seimbang.</li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <div class="card border-0 p-4 bg-light rounded-4">
-                <h6 class="fw-bold mb-3"><i class="bi bi-code-square me-2 text-success"></i>Hyperparameter Tuning</h6>
-                <pre class="bg-dark text-warning p-3 rounded-3 small mb-0"><code>from sklearn.ensemble import AdaBoostClassifier
-model = AdaBoostClassifier(
-    n_estimators=100, 
-    learning_rate=0.1,
-    random_state=42
-)</code></pre>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
-      </div>
-
-      <!-- SLIDE 6: FEATURE ENGINEERING -->
-      <div class="slide-card" id="slide-6">
-        <div>
-          <div class="slide-header">
-            <h3 class="fw-bold mb-0">05. Feature Engineering</h3>
-            <span class="project-badge">Variable Extraction</span>
-          </div>
-          <p class="text-muted">Mentransformasi log aktivitas mentah menjadi variabel prediktor bernilai tinggi:</p>
+          <p class="text-muted small">Hasil perbandingan akurasi prediksi berdasarkan pengujian data validasi:</p>
           <div class="table-responsive mt-3">
-            <table class="table table-bordered align-middle">
+            <table class="table table-bordered align-middle" style="font-size: 0.9rem">
               <thead class="table-light">
                 <tr>
-                  <th>Kategori Fitur</th>
-                  <th>Deskripsi Transformasi</th>
-                  <th>Bobot Pengaruh (Gain)</th>
+                  <th>Arsitektur Model</th>
+                  <th>Akurasi Global</th>
+                  <th>Precision (Presisi)</th>
+                  <th>Recall (Sensitivitas)</th>
+                  <th>F1-Score</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="fw-bold">Recency (Hari sejak transaksi terakhir)</td>
-                  <td>Menghitung jarak hari real-time dari aktivitas pengguna.</td>
-                  <td><span class="text-success fw-bold">Sangat Tinggi (42%)</span></td>
+                  <td>K-Nearest Neighbors (KNN)</td>
+                  <td class="text-secondary">83.5%</td>
+                  <td class="text-secondary">81.8%</td>
+                  <td class="text-secondary">82.1%</td>
+                  <td class="text-secondary">81.9%</td>
                 </tr>
                 <tr>
-                  <td class="fw-bold">Frequency Density</td>
-                  <td>Rasio jumlah transaksi per bulan sepanjang lifecycle akun.</td>
-                  <td><span class="text-success fw-bold">Tinggi (28%)</span></td>
-                </tr>
-                <tr>
-                  <td class="fw-bold">Monetary Volatility</td>
-                  <td>Standar deviasi nilai belanja untuk mengukur ketidakstabilan minat.</td>
-                  <td><span>Sedang (15%)</span></td>
+                  <td><strong>AdaBoost Classifier (Selected)</strong></td>
+                  <td class="text-success fw-bold">92.4%</td>
+                  <td class="text-success fw-bold">91.0%</td>
+                  <td class="text-success fw-bold">90.5%</td>
+                  <td class="text-success fw-bold">90.7%</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p class="small text-muted mt-3 mb-0">
+            <i class="bi bi-lightbulb me-1 text-warning"></i> <strong>Temuan Utama (Feature Importance):</strong> Model AdaBoost mendeteksi bahwa **"Keterlibatan Interaktif Orang Tua saat Bercerita"** dan **"Pembatasan Screen Time"**
+            memiliki bobot pengaruh tertinggi dalam memicu daya tarik membaca anak.
+          </p>
         </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
 
-      <!-- SLIDE 7: MODEL PERFORMANCE -->
-      <div class="slide-card" id="slide-7">
+      <!-- SLIDE 6: TECH STACK -->
+      <div class="slide-card" id="slide-6">
         <div>
           <div class="slide-header">
-            <h3 class="fw-bold mb-0">06. Metrik Performa Model</h3>
-            <span class="project-badge">Evaluation Metrics</span>
-          </div>
-          <div class="row align-items-center mt-3">
-            <div class="col-md-6">
-              <h5 class="fw-bold text-dark mb-3">Akurasi vs Baseline</h5>
-              <p class="text-muted small">Model akhir menggunakan AdaBoost berhasil melampaui performa model standar (Baseline) secara signifikan pada pengujian data uji independen.</p>
-              <div class="d-flex gap-3 mt-4">
-                <div class="p-3 bg-light rounded text-center flex-fill">
-                  <div class="fs-3 fw-bold text-success">89.4%</div>
-                  <div class="text-muted" style="font-size: 0.75rem">F1-Score</div>
-                </div>
-                <div class="p-3 bg-light rounded text-center flex-fill">
-                  <div class="fs-3 fw-bold text-success">91.2%</div>
-                  <div class="text-muted" style="font-size: 0.75rem">ROC-AUC</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Simulated Chart -->
-              <div class="bar-chart-mock">
-                <div class="chart-bar" style="height: 60%">
-                  <span class="chart-value">60%</span>
-                  <span class="chart-label">Baseline</span>
-                </div>
-                <div class="chart-bar" style="height: 78%">
-                  <span class="chart-value">78%</span>
-                  <span class="chart-label">KNN</span>
-                </div>
-                <div class="chart-bar accent" style="height: 92%">
-                  <span class="chart-value">92%</span>
-                  <span class="chart-label">AdaBoost (Final)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-muted small" style="margin-top: 30px">Case Study &bull; Analytics by MW</div>
-      </div>
-
-      <!-- SLIDE 8: INSIGHT GENERATION -->
-      <div class="slide-card" id="slide-8">
-        <div>
-          <div class="slide-header">
-            <h3 class="fw-bold mb-0">07. Insight Utama Bisnis</h3>
-            <span class="project-badge">Data Discoveries</span>
-          </div>
-          <div class="row g-4 mt-2">
-            <div class="col-md-6">
-              <div class="p-4 border rounded-4 bg-light h-100">
-                <h5 class="fw-bold text-dark"><i class="bi bi-clock-history me-2 text-success"></i>Titik Kritis Churn</h5>
-                <p class="small text-muted mb-0">Pelanggan yang tidak melakukan aktivitas transaksional selama lebih dari 21 hari berturut-turut memiliki probabilitas churn melonjak hingga 78.5%.</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="p-4 border rounded-4 bg-light h-100">
-                <h5 class="fw-bold text-dark"><i class="bi bi-wallet2 me-2 text-success"></i>Sensitivitas Harga</h5>
-                <p class="small text-muted mb-0">Kelompok konsumen dengan volatilitas belanja tinggi sangat responsif terhadap kampanye kupon diskon bertarget tepat di hari ke-14 masa inaktif.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
-      </div>
-
-      <!-- SLIDE 9: BUSINESS IMPACT -->
-      <div class="slide-card" id="slide-9">
-        <div>
-          <div class="slide-header">
-            <h3 class="fw-bold mb-0">08. Dampak Bisnis yang Terukur</h3>
-            <span class="project-badge">ROI Realization</span>
-          </div>
-          <div class="row g-4 justify-content-center text-center mt-3">
-            <div class="col-md-4">
-              <div class="p-4 bg-light rounded-4">
-                <div class="metric-number">35%</div>
-                <div class="fw-semibold small text-muted">Penurunan Churn Rate</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="p-4 bg-light rounded-4">
-                <div class="metric-number">2.4x</div>
-                <div class="fw-semibold small text-muted">Kenaikan ROI Marketing</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="p-4 bg-dark text-white rounded-4">
-                <div class="metric-number text-warning">+$14K</div>
-                <div class="fw-semibold small text-warning">Efisiensi Anggaran Iklan</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
-      </div>
-
-      <!-- SLIDE 10: SCALABILITY -->
-      <div class="slide-card" id="slide-10">
-        <div>
-          <div class="slide-header">
-            <h3 class="fw-bold mb-0">09. Skalabilitas & Roadmap</h3>
-            <span class="project-badge">Future Enhancements</span>
-          </div>
-          <div class="ps-3 border-start border-3 border-success-subtle mt-4">
-            <h5 class="fw-bold mb-1">Tahap 1: Real-Time Stream Scoring</h5>
-            <p class="small text-muted mb-4">Mengintegrasikan model dengan API Kafka/Flask untuk melakukan prediksi instan begitu konsumen memperbarui keranjang belanja.</p>
-
-            <h5 class="fw-bold mb-1">Tahap 2: Otomatisasi Retensi</h5>
-            <p class="small text-muted mb-0">Menghubungkan trigger prediksi langsung ke penyedia layanan WhatsApp/Email gateway untuk mengirimkan promo otomatis.</p>
-          </div>
-        </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
-      </div>
-
-      <!-- SLIDE 11: TECHNICAL STACK -->
-      <div class="slide-card" id="slide-11">
-        <div>
-          <div class="slide-header">
-            <h3 class="fw-bold mb-0">10. Spesifikasi Teknologi</h3>
-            <span class="project-badge">Tech Stack Used</span>
+            <h3 class="fw-bold mb-0">05. Spesifikasi Teknis</h3>
+            <span class="project-badge">Tech Stack</span>
           </div>
           <div class="row row-cols-2 row-cols-md-4 g-3 mt-4">
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-braces me-2 text-primary"></i>Python</div>
+              <div class="tech-tile"><i class="bi bi-braces me-2 text-primary"></i>Python 3</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-graph-up me-2 text-success"></i>Scikit-Learn</div>
+              <div class="tech-tile"><i class="bi bi-hexagon-fill me-2 text-warning"></i>Scikit-Learn</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-database-fill me-2 text-danger"></i>PostgreSQL</div>
+              <div class="tech-tile"><i class="bi bi-table me-2 text-success"></i>Pandas & NumPy</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-gear-fill me-2 text-info"></i>KNIME</div>
+              <div class="tech-tile"><i class="bi bi-gear-fill me-2 text-info"></i>KNIME Analytics</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-table me-2 text-success"></i>Pandas / NumPy</div>
+              <div class="tech-tile"><i class="bi bi-bar-chart-line me-2 text-danger"></i>Seaborn Maps</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-terminal-fill me-2 text-dark"></i>Git / GitHub</div>
+              <div class="tech-tile"><i class="bi bi-cpu-fill me-2 text-dark"></i>Jupyter Lab</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-bar-chart-steps me-2 text-warning"></i>Power BI</div>
+              <div class="tech-tile"><i class="bi bi-file-earmark-spreadsheet me-2 text-success"></i>Excel Gateway</div>
             </div>
             <div class="col">
-              <div class="tech-tile"><i class="bi bi-cloud-fill me-2 text-primary"></i>Flask API</div>
+              <div class="tech-tile"><i class="bi bi-terminal-fill me-2 text-secondary"></i>Git Engine</div>
             </div>
           </div>
         </div>
-        <div class="text-muted small">Case Study &bull; Analytics by MW</div>
+        <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
 
-      <!-- SLIDE 12: Q&A / CONCLUSION -->
-      <div class="slide-card" id="slide-12">
+      <!-- SLIDE 7: CONCLUSION -->
+      <div class="slide-card" id="slide-7">
         <div class="text-center my-auto">
           <h1 class="display-5 fw-bold text-dark mb-3">Terima Kasih</h1>
-          <p class="text-muted fs-5 mb-4">Mari berkolaborasi untuk membangun solusi berbasis data yang berdampak nyata.</p>
+          <p class="text-muted fs-5 mb-4">Mengoptimalkan potensi literasi anak bangsa lewat pemodelan data prediktif yang akurat.</p>
           <div class="p-3 bg-light rounded-pill d-inline-block px-5 border"><span class="fw-semibold text-success-custom">Mega Wahana Siboro</span> &nbsp;|&nbsp; <i class="bi bi-envelope me-1"></i> informatics.mw@gmail.com</div>
         </div>
         <div class="text-muted small text-center w-100">Analytics by MW &copy; 2026</div>
@@ -741,12 +497,12 @@ model = AdaBoostClassifier(
       </div>
     </div>
 
-    <!-- Script JavaScript untuk Manajemen Slide -->
+    <!-- Script JavaScript Navigasi Slide -->
     <script>
       let currentSlide = 1;
-      const totalSlides = 12;
+      const totalSlides = 7;
 
-      // Inisialisasi Dots secara dinamis
+      // Render Dots Otomatis
       const dotsContainer = document.getElementById("dots-container");
       for (let i = 1; i <= totalSlides; i++) {
         const dot = document.createElement("div");
@@ -758,17 +514,14 @@ model = AdaBoostClassifier(
       }
 
       function updateSlideUI() {
-        // Sembunyikan semua slide
         for (let i = 1; i <= totalSlides; i++) {
           document.getElementById(`slide-${i}`).classList.remove("active");
           document.getElementById(`dot-${i}`).classList.remove("active");
         }
 
-        // Tampilkan slide aktif
         document.getElementById(`slide-${currentSlide}`).classList.add("active");
         document.getElementById(`dot-${currentSlide}`).classList.add("active");
 
-        // Kontrol tombol disabled
         document.getElementById("btn-prev").disabled = currentSlide === 1;
         document.getElementById("btn-next").disabled = currentSlide === totalSlides;
       }
@@ -785,7 +538,7 @@ model = AdaBoostClassifier(
         updateSlideUI();
       }
 
-      // Dukungan navigasi panah keyboard
+      // Arrow Key Keyboard Listener
       document.addEventListener("keydown", function (event) {
         if (event.key === "ArrowRight" && currentSlide < totalSlides) {
           moveSlide(1);
