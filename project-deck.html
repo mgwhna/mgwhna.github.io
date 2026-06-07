@@ -414,26 +414,40 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>K-Nearest Neighbors (KNN)</td>
-                  <td class="text-secondary">83.5%</td>
-                  <td class="text-secondary">81.8%</td>
-                  <td class="text-secondary">82.1%</td>
-                  <td class="text-secondary">81.9%</td>
+                  <td><strong>K-Nearest Neighbors (KNN) (Selected)</strong></td>
+                  <td class="text-success fw-bold">96.0%</td>
+                  <td class="text-success fw-bold">96.0%</td>
+                  <td class="text-success fw-bold">96.0%</td>
+                  <td class="text-success fw-bold">96.0%</td>
                 </tr>
                 <tr>
-                  <td><strong>AdaBoost Classifier (Selected)</strong></td>
-                  <td class="text-success fw-bold">92.4%</td>
-                  <td class="text-success fw-bold">91.0%</td>
-                  <td class="text-success fw-bold">90.5%</td>
-                  <td class="text-success fw-bold">90.7%</td>
+                  <td>AdaBoost Classifier</td>
+                  <td class="text-secondary">94.0%</td>
+                  <td class="text-secondary">94.0%</td>
+                  <td class="text-secondary">94.0%</td>
+                  <td class="text-secondary">94.0%</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p class="small text-muted mt-3 mb-0">
-            <i class="bi bi-lightbulb me-1 text-warning"></i> <strong>Temuan Utama (Feature Importance):</strong> Model AdaBoost mendeteksi bahwa **"Keterlibatan Interaktif Orang Tua saat Bercerita"** dan **"Pembatasan Screen Time"**
-            memiliki bobot pengaruh tertinggi dalam memicu daya tarik membaca anak.
+            <i class="bi bi-lightbulb me-1 text-warning"></i> <strong>Temuan Utama (Feature Importance):</strong> Model secara akurat mendeteksi bahwa variabel <strong>"Frekuensi Mendongeng Mingguan"</strong> memiliki bobot pengaruh
+            tertinggi (Importance Score > 0.7) dalam memicu daya tarik membaca anak, diikuti oleh pembatasan <strong>"Durasi Gawai Harian"</strong>.
           </p>
+          <div class="row g-3 mt-3 text-center">
+            <div class="col-md-6">
+              <div class="p-2 border rounded-3 bg-light">
+                <small class="fw-bold d-block mb-1 text-secondary">Confusion Matrix (KNN vs AdaBoost)</small>
+                <img src="confusion_matrix.png" alt="Confusion Matrix" class="img-fluid rounded-2" style="max-height: 220px" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-2 border rounded-3 bg-light">
+                <small class="fw-bold d-block mb-1 text-secondary">Feature Importance Score</small>
+                <img src="feature_importance.png" alt="Feature Importance" class="img-fluid rounded-2" style="max-height: 220px" />
+              </div>
+            </div>
+          </div>
         </div>
         <div class="text-muted small">Analytics by MW &bull; 2026</div>
       </div>
