@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manajemen Perkebunan - Analytics by MW</title>
+    <link rel="icon" type="image/png" href="img/projects/logo-web.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fcfbf7 !important;
+        color: #333;
+      }
+      .bg-primary-custom {
+        background-color: #556b2f !important;
+      }
+      .text-success-custom {
+        color: #6b8e23 !important;
+      }
+      .btn-primary-custom {
+        background-color: #556b2f !important;
+        border-color: #556b2f !important;
+        color: #ffffff !important;
+        transition: all 0.3s ease;
+      }
+      .btn-primary-custom:hover {
+        background-color: #3e4f22 !important;
+      }
+      .script-font {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+      }
+      .farm-card {
+        background: #ffffff;
+        border: 1px solid #e1ded7;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary-custom shadow-sm fixed-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand fw-bold fs-5" href="index.html">MEGA WAHANA SIBORO</a>
+        <a href="showcase.html" class="btn btn-outline-light btn-sm rounded-pill px-3"><i class="bi bi-arrow-left me-1"></i> Kembali</a>
+      </div>
+    </nav>
+
+    <header class="text-center" style="padding: 120px 0 50px 0; background-color: #f4f1ea; border-bottom: 1px solid #e1ded7" data-aos="fade-down">
+      <div class="container">
+        <div class="mb-2 d-flex align-items-center justify-content-center gap-2">
+          <i class="bi bi-calendar-check fs-2 text-success-custom"></i>
+          <span class="fs-1 fw-light text-success-custom script-font">Crop Scheduling & Location Tracker</span>
+        </div>
+        <p class="lead text-muted max-width-md mx-auto">Sistem cerdas pemantauan jadwal tanam, estimasi panen, dan koordinat blok lahan perkebunan secara presisi.</p>
+      </div>
+    </header>
+
+    <main class="container my-5" data-aos="fade-up">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="farm-card p-4 shadow-sm h-100">
+            <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2 text-success-custom"></i>Timeline & Kalender Tanam</h5>
+            <div class="border-start border-2 border-success ps-3 mb-3">
+              <span class="badge bg-success small mb-1">Fase Vegetatif</span>
+              <h6 class="fw-bold mb-0">Plot 01 - Bawang Besar</h6>
+              <p class="text-muted small mb-0">Tanggal Tanam: 12 Mei 2026 | Estimasi Panen: Agustus 2026</p>
+            </div>
+            <div class="border-start border-2 border-warning ps-3">
+              <span class="badge bg-warning text-dark small mb-1">Persiapan Lahan</span>
+              <h6 class="fw-bold mb-0">Plot 02 - Pembibitan</h6>
+              <p class="text-muted small mb-0">Jadwal Gembur Tanah & Pemupukan Organik Dasar: 15 Juni 2026</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="farm-card p-4 shadow-sm h-100">
+            <h5 class="fw-bold mb-3"><i class="bi bi-geo-alt-fill me-2 text-success-custom"></i>Pemetaan Blok Perkebunan</h5>
+            <p class="text-muted small">Integrasi titik koordinat GPS untuk pelacakan distribusi logistik hasil tani langsung dari area perkebunan.</p>
+            <div class="p-4 text-center rounded bg-light border border-dashed" style="height: 150px; display: flex; align-items: center; justify-content: center">
+              <span class="text-muted small"><i class="bi bi-map me-1"></i> Simulator Map / Koordinat Geolocation Lahan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bundle/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 1000 });
+    </script>
+  </body>
+</html>
